@@ -7,14 +7,76 @@
                 "nodeDataArray": [
                     {
                         "formKUID": "ba76f803e9d748a4bde89ac0afaee235",
-                        "formName": "Form1",
+                        "formName": "landingForm",
                         "isStartupForm": true,
                         "key": "ba76f803e9d748a4bde89ac0afaee235",
-                        "loc": "8 24.845263671875003",
-                        "thumbnailURL": null
+                        "loc": "9 24.845263671875003",
+                        "thumbnailURL": "/assets/OidcDemo/forms/desktop/loginModule/landingForm.sm/.thumbs/640.jpeg?1602721766108"
+                    },
+                    {
+                        "formKUID": "g973256d68504089adc4d660ff14d303",
+                        "formName": "loginForm",
+                        "isStartupForm": false,
+                        "key": "g973256d68504089adc4d660ff14d303",
+                        "loc": "223.9999999999999 24.845263671875003",
+                        "thumbnailURL": "/assets/OidcDemo/forms/desktop/loginModule/loginForm.sm/.thumbs/640.jpeg?1602721766121"
+                    },
+                    {
+                        "formKUID": "c6e7a43399c749bb8d84b5f4af4a835a",
+                        "formName": "errorForm",
+                        "isStartupForm": false,
+                        "key": "c6e7a43399c749bb8d84b5f4af4a835a",
+                        "loc": "435.9999999999999 279.6905273437501",
+                        "thumbnailURL": "/assets/OidcDemo/forms/desktop/mainModule/errorForm.sm/.thumbs/640.jpeg?1602721769608"
+                    },
+                    {
+                        "formKUID": "f7fb773e947849bf81b156f3f98f243c",
+                        "formName": "homeForm",
+                        "isStartupForm": false,
+                        "key": "f7fb773e947849bf81b156f3f98f243c",
+                        "loc": "435.9999999999999 24.845263671874974",
+                        "thumbnailURL": "/assets/OidcDemo/forms/desktop/mainModule/homeForm.sm/.thumbs/640.jpeg?1602721771334"
                     }
                 ]
             }
+        },
+        "mobile": {
+            "class": "GraphLinksModel",
+            "linkDataArray": [],
+            "nodeDataArray": [
+                {
+                    "formKUID": "i1f19f2d9535404d9d1f90695b5ac42a",
+                    "formName": "loginForm",
+                    "isStartupForm": false,
+                    "key": "i1f19f2d9535404d9d1f90695b5ac42a",
+                    "loc": "8 24.845263671875003",
+                    "thumbnailURL": "/assets/OidcDemo/forms/mobile/loginModule/loginForm.sm/.thumbs/default.jpeg?1602721926373"
+                },
+                {
+                    "formKUID": "f46587cc4bee4dd6b8dd04a32763ddbe",
+                    "formName": "landingForm",
+                    "isStartupForm": true,
+                    "key": "f46587cc4bee4dd6b8dd04a32763ddbe",
+                    "loc": "-227 24.84526367187506",
+                    "thumbnailURL": "/assets/OidcDemo/forms/mobile/loginModule/landingForm.sm/.thumbs/default.jpeg?1602721926374"
+                },
+                {
+                    "formKUID": "ddcd28e3cf0a4421b6298f0d0e655ccb",
+                    "formName": "errorForm",
+                    "isStartupForm": false,
+                    "key": "ddcd28e3cf0a4421b6298f0d0e655ccb",
+                    "loc": "237 406.8452636718746",
+                    "thumbnailURL": "/assets/OidcDemo/forms/mobile/mainModule/errorForm.sm/.thumbs/default.jpeg?1602721940714"
+                },
+                {
+                    "formKUID": "h14cf10cfc9443d4ae2d75f1db06620b",
+                    "formName": "homeForm",
+                    "isStartupForm": false,
+                    "key": "h14cf10cfc9443d4ae2d75f1db06620b",
+                    "loc": "237 24.84526367187503",
+                    "thumbnailURL": "/assets/OidcDemo/forms/mobile/mainModule/homeForm.sm/.thumbs/default.jpeg?1602721955385"
+                }
+            ]
         }
     },
     "nodeLocation": {
