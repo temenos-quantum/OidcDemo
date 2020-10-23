@@ -19,7 +19,7 @@ define(["main", "./options"], function(main, options){
 		* 2. Hack window.open to trick the SDK into opening the login in the same window as the app.
 		* 3. TODO: Revover the user session after navigating back.
 		*/
-		overrideWindowOpen()
+		//overrideWindowOpen()
 		
 		return new Promise((resolve, reject) => {
 			main.getIdentity().login(options, response => { //Success

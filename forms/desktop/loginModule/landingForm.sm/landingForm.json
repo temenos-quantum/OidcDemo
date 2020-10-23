@@ -43,7 +43,8 @@
     "canvasWidth": 1200,
     "children": [
         "mainFlex",
-        "registrationFlex"
+        "registrationFlex",
+        "rightPanelFlex"
     ],
     "containerweight": 100,
     "controllerInfo": {
@@ -53,8 +54,8 @@
         }
     },
     "currentBreakpoint": {
-        "kuid": "b3",
-        "width": 640
+        "kuid": "b1",
+        "width": 1366
     },
     "desktopweb": {
         "needAppMenu": false,
@@ -92,6 +93,11 @@
     "name": "kony.ui.Form2",
     "needappmenu": false,
     "paddinginpixel": false,
+    "responsiveData": {
+        "b1": {
+            "skin": "s9f03c84feef4ffda34aa4157c2fd781"
+        }
+    },
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainscrollposition": false,
@@ -118,6 +124,9 @@
     "titleBarSkin": "s73b23cf3af74bd5b192cd8554f00219",
     "titlebar": true,
     "type": 3,
+    "vizProps": {
+        "globalRespDesignEnabled": false
+    },
     "wType": "Form",
     "windows8": {
         "needAppMenu": false

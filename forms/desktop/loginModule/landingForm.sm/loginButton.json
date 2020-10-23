@@ -48,6 +48,11 @@
     "name": "kony.ui.Button",
     "parent": "mainFlex",
     "pf": "landingForm",
+    "responsiveData": {
+        "b1": {
+            "isVisible": false
+        }
+    },
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "wType": "Button",

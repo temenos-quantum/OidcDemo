@@ -4,6 +4,10 @@
         "type": "string",
         "value": "60%"
     },
+    "_left_": {
+        "type": "number",
+        "value": ""
+    },
     "_margin_": [
         0,
         0,
@@ -28,7 +32,6 @@
         "value": "90%"
     },
     "allboxes": [],
-    "autogrowmode": 0,
     "canUpdateUI": true,
     "centerx": {
         "type": "string",
@@ -36,7 +39,9 @@
     },
     "children": [
         "loginButton",
-        "logoImg"
+        "logoImg",
+        "OktaLogin",
+        "adImage"
     ],
     "clipbounds": false,
     "containerweight": 100,
@@ -50,6 +55,31 @@
     "name": "kony.ui.FlexContainer",
     "parent": "landingForm",
     "pf": "landingForm",
+    "responsiveData": {
+        "b1": {
+            "centerX": {
+                "type": "string",
+                "value": ""
+            },
+            "height": {
+                "type": "string",
+                "value": "100%"
+            },
+            "left": {
+                "type": "number",
+                "value": "0"
+            },
+            "skin": "s12b9b0918064ba89c8134d880ac3f70",
+            "top": {
+                "type": "string",
+                "value": "0%"
+            },
+            "width": {
+                "type": "string",
+                "value": "600dp"
+            }
+        }
+    },
     "responsiveconfig": {
         "offset": {
             "b1": 0,

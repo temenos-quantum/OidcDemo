@@ -1,14 +1,12 @@
 {
-    "@class": "com.kony.gen.viz.model.component.KVizImage2",
     "DNDConfig": null,
-    "_base64_": null,
     "_height_": {
         "type": "string",
-        "value": "150dp"
+        "value": "220dp"
     },
     "_left_": {
         "type": "string",
-        "value": "157dp"
+        "value": "127dp"
     },
     "_margin_": [
         0,
@@ -16,74 +14,79 @@
         0,
         0
     ],
+    "_orientation_": 6,
     "_padding_": [
         0,
         0,
         0,
         0
     ],
-    "_skin_": "scfcb3cbb6d8481285ec689dd38e364d",
-    "_src_": "iron_bank_logo2.png",
+    "_percent_": true,
+    "_skin_": "sbdb5c769bae4812af3d8b235552c2fd",
     "_top_": {
         "type": "string",
-        "value": "100dp"
+        "value": "269dp"
     },
     "_width_": {
         "type": "string",
-        "value": "80%"
+        "value": "100%"
     },
+    "allboxes": [],
     "canUpdateUI": true,
     "centerx": {
-        "type": "string",
-        "value": "50%"
+        "type": "number",
+        "value": ""
     },
     "centery": {
-        "type": "string",
-        "value": "40%"
+        "type": "number",
+        "value": ""
     },
+    "children": [
+        "bsTitle",
+        "bsLabel"
+    ],
+    "clipbounds": true,
     "containerweight": 100,
-    "id": "logoImg",
-    "imagescalemode": 1,
+    "enablescrolling": true,
+    "id": "bsFlex",
     "info": null,
-    "invokedProperty": "src",
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "i0390bbe613b40709059868b56b56324",
-    "name": "kony.ui.Image2",
-    "parent": "mainFlex",
+    "kuid": "db4b5b1daedd4a9ca9f7bee1149f9fb4",
+    "layouttype": 2,
+    "name": "kony.ui.FlexContainer",
+    "parent": "rightPanelFlex",
     "pf": "landingForm",
     "responsiveData": {
         "b1": {
             "centerX": {
                 "type": "string",
-                "value": ""
+                "value": "50%"
             },
             "centerY": {
                 "type": "string",
-                "value": ""
-            },
-            "height": {
-                "type": "string",
-                "value": "100dp"
+                "value": "50%"
             },
             "left": {
                 "type": "string",
-                "value": "10dp"
+                "value": ""
             },
             "top": {
                 "type": "string",
-                "value": "10dp"
+                "value": ""
             },
             "width": {
                 "type": "string",
-                "value": "200dp"
+                "value": "80%"
             }
         }
     },
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
-    "srcType": 1,
-    "wType": "Image",
-    "widgetalignment": 5,
+    "retainflowhorizontalalignment": false,
+    "snapgridsize": 10,
+    "snaptogrid": true,
+    "wType": "FlexContainer",
+    "widgetalignment": 1,
     "zindex": 1
 }

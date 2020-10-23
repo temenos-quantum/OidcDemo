@@ -1,0 +1,112 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizBrowser",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "220dp"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "148dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_top_": {
+        "type": "string",
+        "value": "268dp"
+    },
+    "_type_": 5,
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "androidwearos": {
+        "render": false
+    },
+    "canUpdateUI": true,
+    "centerx": {
+        "type": "number",
+        "value": ""
+    },
+    "centery": {
+        "type": "number",
+        "value": ""
+    },
+    "containerweight": 69,
+    "detecttelnumber": true,
+    "htmlstring": "Browser",
+    "id": "OktaLogin",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "b022f346b2844f3fa3766f922fe6aed2",
+    "localurl": "w611272c5a9043d4a9f36205bc9a6694",
+    "margininpixel": false,
+    "method": "get",
+    "minwidth": {
+        "type": "number",
+        "value": ""
+    },
+    "name": "kony.ui.Browser",
+    "paddinginpixel": false,
+    "parent": "mainFlex",
+    "pf": "landingForm",
+    "requesturlconfig": {
+        "URL": "",
+        "requestMethod": "get"
+    },
+    "responsiveData": {
+        "b1": {
+            "centerX": {
+                "type": "string",
+                "value": "50%"
+            },
+            "centerY": {
+                "type": "string",
+                "value": "50%"
+            },
+            "height": {
+                "type": "string",
+                "value": "400dp"
+            },
+            "left": {
+                "type": "string",
+                "value": ""
+            },
+            "minWidth": {
+                "type": "string",
+                "value": "300px"
+            },
+            "top": {
+                "type": "string",
+                "value": ""
+            },
+            "width": {
+                "type": "string",
+                "value": "400px"
+            }
+        },
+        "b2": {
+            "isVisible": false
+        },
+        "b3": {
+            "isVisible": false
+        }
+    },
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "screenlevelwidget": false,
+    "url": "",
+    "wType": "Browser",
+    "zindex": 1
+}
