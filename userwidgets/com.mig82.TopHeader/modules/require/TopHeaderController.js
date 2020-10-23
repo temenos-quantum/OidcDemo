@@ -1,4 +1,4 @@
-define([], function() {
+define(["main"], function(main) {
 
 	return {
 
@@ -7,8 +7,7 @@ define([], function() {
 		postShow: function (){
 
 			this.view.logoutButton.onClick = () => {
-				var idp = kony.sdk.getDefaultInstance().getIdentityService("MyOktaIdP")
-				idp.logout(() => { //Success
+				main.getIdentity().logout(() => { //Success
 					(new kony.mvc.Navigation("landing")).navigate()
 				}, e => { //Failure
 					(new kony.mvc.Navigation("error")).navigate(e)

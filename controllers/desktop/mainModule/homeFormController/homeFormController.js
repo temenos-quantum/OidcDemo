@@ -1,4 +1,4 @@
-define([], function(){
+define(["main"], function(main){
 
 	return{
 
@@ -8,7 +8,7 @@ define([], function(){
 
 			//Fetch the user profile.
 			var idp = kony.sdk.getDefaultInstance().getIdentityService("MyOktaIdP")
-			idp.getProfile(true,
+			main.getIdentity().getProfile(true,
 				response => { //onSuccess
 				this.view.profileLabel.text = response.user_attributes.given_name
 				//Note: You can also get other profile info —e.g. family_name, locale, email and more. 

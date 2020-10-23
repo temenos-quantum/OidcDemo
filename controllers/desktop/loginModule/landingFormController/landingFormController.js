@@ -1,8 +1,13 @@
-define([], function(){
+define(["main"], function(main){
 
 	return{
 
-		preShow: function(){},
+		preShow: function(){
+			//If the user has already logged in, go to home screen.
+			if(main.getIdentity().usePersistedLogin()) {
+				(new kony.mvc.Navigation("home")).navigate()
+			}
+		},
 
 		postShow: function(){
 			this.view.loginButton.onClick = () => {
