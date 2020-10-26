@@ -1,0 +1,48 @@
+{
+    "customComponent": {
+        "i18nSupported": true,
+        "id": "cwba7a795bec1f4badbbf7f7ffa9257bc9",
+        "isOverride": false,
+        "konyWrapperFiles": [
+            "resources/thirdpartywidgets/widgetwrapper/tp-OktaLogin-wrapper.js"
+        ],
+        "libraryFiles": [],
+        "libraryName": "",
+        "marginSupported": true,
+        "name": "OktaLogin",
+        "paddingSupported": true,
+        "platformID": "0",
+        "property": [
+            {
+                "categoryType": "Custom",
+                "defaultValue": "dev-359971.oktapreview.com/",
+                "exclude": false,
+                "name": "oktaDomain",
+                "propertySelection": false,
+                "type": "String",
+                "uniqueID": "cwpaf447f88ff7646f588b250c24fe546e5",
+                "value": "dev-359971.oktapreview.com/"
+            },
+            {
+                "categoryType": "Custom",
+                "defaultValue": "0oaugi3",
+                "exclude": false,
+                "name": "clientId",
+                "propertySelection": false,
+                "type": "String",
+                "uniqueID": "cwpj0a3327ea3554aa0a4aa5618b00378be",
+                "value": "0oaugi3"
+            },
+            {
+                "categoryType": "Custom",
+                "defaultValue": "https://100032668.auth.konycloud.com/oauth2/callback",
+                "exclude": false,
+                "name": "redirectUri",
+                "propertySelection": false,
+                "type": "String",
+                "uniqueID": "cwpgd3ba967a43c439e880c53c0cecf2ee7",
+                "value": "https://100032668.auth.konycloud.com/oauth2/callback"
+            }
+        ]
+    }
+}

@@ -1,0 +1,88 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizCustom",
+    "DNDConfig": null,
+    "_height_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "android": {
+        "render": false
+    },
+    "androidwearos": {
+        "render": false
+    },
+    "canUpdateUI": true,
+    "centerx": {
+        "type": "string",
+        "value": "50%"
+    },
+    "centery": {
+        "type": "string",
+        "value": "50%"
+    },
+    "containerweight": 0,
+    "customProperties": {
+        "clientId": "0oaugi3",
+        "oktaDomain": "dev-359971.oktapreview.com/",
+        "redirectUri": "https://100032668.auth.konycloud.com/oauth2/callback"
+    },
+    "cwEvents": [],
+    "cwid": "cwba7a795bec1f4badbbf7f7ffa9257bc9",
+    "id": "oktaLoginWidget",
+    "info": null,
+    "ipad": {
+        "render": false
+    },
+    "iphone": {
+        "render": false
+    },
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kiosk": {
+        "render": false
+    },
+    "kuid": "de849ae042fc4bb5a6d29c8950c6b8b5",
+    "name": "OktaLogin-kony.ui",
+    "nameSpaceIndex": 0,
+    "parent": "OktaLogin",
+    "pf": "userwidgetmodel",
+    "platformKey": "spa",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "tabrcandroid": {
+        "render": false
+    },
+    "wType": "TPW",
+    "watchos": {
+        "render": false
+    },
+    "widgetIndex": 0,
+    "windows10": {
+        "render": false
+    },
+    "windows8": {
+        "render": false
+    },
+    "winphone10": {
+        "render": false
+    },
+    "winphone8": {
+        "render": false
+    }
+}

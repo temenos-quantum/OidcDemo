@@ -1,0 +1,114 @@
+{
+    "classname": "OktaLogin",
+    "definitions": {
+        "apis": {
+            "custom": [],
+            "passthrough": []
+        },
+        "events": {
+            "custom": [],
+            "passthrough": []
+        },
+        "groups": {
+            "apis": [],
+            "events": [],
+            "properties": [],
+            "widgets": []
+        },
+        "properties": {
+            "custom": [],
+            "passthrough": [
+                {
+                    "access": "Enable",
+                    "group": "General",
+                    "kuid": "f8b638a286a2461481e711b000c4692b",
+                    "originalPropertyKey": "oktaDomain",
+                    "propertyIndex": 0,
+                    "propertyKey": "oktaDomain",
+                    "pw": {
+                        "access": "readwrite",
+                        "category": "widget",
+                        "displayName": "oktaDomain",
+                        "supportedPlatforms": {
+                            "desktop": [
+                                "desktopweb"
+                            ],
+                            "mobile": [
+                                "spa"
+                            ],
+                            "tablet": [
+                                "spa"
+                            ]
+                        },
+                        "type": "string",
+                        "uiRepresentation": "Label-Textbox",
+                        "wType": "TPW"
+                    },
+                    "srcWgtKUID": "de849ae042fc4bb5a6d29c8950c6b8b5"
+                },
+                {
+                    "access": "Enable",
+                    "group": "General",
+                    "kuid": "fca5df88135841559bc1633a694fa48c",
+                    "originalPropertyKey": "clientId",
+                    "propertyIndex": 1,
+                    "propertyKey": "clientId",
+                    "pw": {
+                        "access": "readwrite",
+                        "category": "widget",
+                        "displayName": "clientId",
+                        "supportedPlatforms": {
+                            "desktop": [
+                                "desktopweb"
+                            ],
+                            "mobile": [
+                                "spa"
+                            ],
+                            "tablet": [
+                                "spa"
+                            ]
+                        },
+                        "type": "string",
+                        "uiRepresentation": "Label-Textbox",
+                        "wType": "TPW"
+                    },
+                    "srcWgtKUID": "de849ae042fc4bb5a6d29c8950c6b8b5"
+                },
+                {
+                    "access": "Enable",
+                    "group": "General",
+                    "kuid": "b0a9ec0aed91472a98512f3f2f0f34da",
+                    "originalPropertyKey": "redirectUri",
+                    "propertyIndex": 2,
+                    "propertyKey": "redirectUri",
+                    "pw": {
+                        "access": "readwrite",
+                        "category": "widget",
+                        "displayName": "redirectUri",
+                        "supportedPlatforms": {
+                            "desktop": [
+                                "desktopweb"
+                            ],
+                            "mobile": [
+                                "spa"
+                            ],
+                            "tablet": [
+                                "spa"
+                            ]
+                        },
+                        "type": "string",
+                        "uiRepresentation": "Label-Textbox",
+                        "wType": "TPW"
+                    },
+                    "srcWgtKUID": "de849ae042fc4bb5a6d29c8950c6b8b5"
+                }
+            ]
+        },
+        "widgets": {
+            "expose": [],
+            "passthrough": []
+        }
+    },
+    "namespace": "com.mig82",
+    "version": "1.0.0"
+}

@@ -40,7 +40,7 @@
     "children": [
         "loginButton",
         "logoImg",
-        "OktaLogin",
+        "oktaLogin",
         "adImage"
     ],
     "clipbounds": false,
