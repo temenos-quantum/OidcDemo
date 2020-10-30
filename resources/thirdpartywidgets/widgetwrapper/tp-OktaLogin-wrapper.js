@@ -1,61 +1,81 @@
 /*exported OktaLogin*/
 var OktaLogin = {
 
-	oktaDivId: "okta_login",
-
-    initializeWidget: function(parentNode /*, widgetModel, config*/) {
+	initializeWidget: function(parentNode /*, widgetModel, config*/) {
 		kony.print("OktaLogin: initialising widget")
 
-		/*The Okta CSS can be loaded from the CDN without issues.*/
-		parentNode.innerHTML = `<link
-			href="https://global.oktacdn.com/okta-signin-widget/4.3.2/css/okta-sign-in.min.css"
-			type="text/css" rel="stylesheet"/>
-		`
-		/*Loading the Okta JS from CDN won't work because it will define OktaSignIn as a RequireJs module, which can only be
-		loaded from another RequireJs module. Could this wrapper be defined as an RequireJs module?
-		For now, the quick workaround is to manually download the Okta JS lib into a component and load it from the component's controller.*/
-		//parentNode.innerHTML += `<script src="https://global.oktacdn.com/okta-signin-widget/4.3.2/js/okta-sign-in.min.js" type="text/javascript" async="async"></script>`
+		var oktaDivId = "okta_login"
+		/*The Okta CSS and JS are added in Project Settings>Responsive Web/HTML Head*/
 
 		/*Create is the div in which the Okta login screen will be loaded*/
-		parentNode.innerHTML += `<div
-			id="${this.oktaDivId}"
+		parentNode.innerHTML = `<div
+			id="${oktaDivId}"
 			style="border: 1px solid red;background-color: red">
 		</div>`
-		//parentNode.innerHTML += `<div id="${this.oktaDivId}"></div>`
 
-		/*Note: Requiring the script by manipulating the DOM does not work because of the same AMD issue as above.*/
-		/*var script = document.createElement("script");
-		script.type = "text/javascript";
-		script.src = "https://global.oktacdn.com/okta-signin-widget/4.3.2/js/okta-sign-in.min.js";
-		//script.innerHTML = 'alert(1)';
-		document.getElementsByTagName('head').item(0).appendChild(script);
-		*/
+		debugger;
+		//TODO: Define oktaDomain, clientId and redirectUri as widget properties.
+		var oktaDomain = "dev-359971.oktapreview.com/"
+		var clientId = "0oaugi3kt4nGfNyGZ0h7"
+		var redirectUri = ""
 
-		/*------------------------------------------------
-		// Load the HTML and script as an object.
-		var loc = window.location;
-		var baseUrl = loc.protocol + "//" + loc.host + "/" + loc.pathname.split('/')[1];
-		var okta_login_uri = baseUrl + "/desktopweb/web/localfiles/okta_login.html"
-		//e.g: http://127.0.0.1:9989/OidcDemo/desktopweb/web/localfiles/okta_login.html
-		parentNode.innerHTML = `<object data="${okta_login_uri}" width="100%" height="100%"></object>`
-		*/
-
-		/*-----------------------------------------------
-		//Using AJAX won't work because the script in the content returned won't run.
-		var req = new XMLHttpRequest();
-		req.onreadystatechange = () => {
-			if (req.readyState === XMLHttpRequest.DONE) {
-				if (req.status === 200) {
-					alert(req.responseText);
-					parentNode.innerHTML = req.responseText
-				} else {
-					alert('There was a problem with the request.');
-				}
-			}
+		/*global window*/
+		if(typeof window !== "undefined"){
+			/*global getBaseUri*/
+			redirectUri = getBaseUri()
+			//e.g. http://127.0.0.1:9989/OidcDemo/
 		}
-		req.open('GET', okta_login_uri);
-		req.send();
-		*/
+		else{
+			/*Note: Can't use Fabric Identity's callback URL because it assumes the 3rd party login occurs in a pop-up window
+				and tries to close it, resulting in error "Cannot read property 'postMessage' of null"*/
+			redirectUri = "https://100032668.auth.konycloud.com/oauth2/callback"
+		}
+
+		debugger
+
+		// Based on sample code found at https://developer.okta.com/code/javascript/okta_sign-in_widget/
+		/*global OktaSignIn*/
+		var signIn = new OktaSignIn({
+			baseUrl: `https://${oktaDomain}`,
+			el: `#${oktaDivId}`,
+			authParams: {
+				issuer: `https://${oktaDomain}/oauth2/default`
+			}
+		});
+
+		signIn.showSignInToGetTokens({
+			clientId,
+			redirectUri, // Must be in the list of redirect URIs enabled for the OIDC app
+			getAccessToken: true, // Return an access token from the authorization server
+			pkce: true,
+			getIdToken: true, // Return an ID token from the authorization server
+			scope: 'openid profile offline_access'
+		});
+
+		debugger
+		//After going to the Okta login screen and coming back
+		if(signIn.hasTokensInUrl()){
+			kony.print("We have Okta tokens!")
+			signIn.authClient.token.parseFromUrl().then(
+				//If we get here, the user just logged in.
+				function success(res) {
+					debugger
+					var accessToken = res.tokens.accessToken;
+					var idToken = res.tokens.idToken;
+
+					signIn.authClient.tokenManager.add('accessToken', accessToken);
+					signIn.authClient.tokenManager.add('idToken', idToken);
+
+					kony.print("Hello, " + idToken.claims.email + "! You just logged in! :)");
+				},
+				//TODO: Facing error AuthSdkError "Unable to retrieve OAuth redirect params cookie"
+				function error(err) {
+					debugger
+					kony.print(err);
+				}
+			)
+		}
+
     },
 
     modelChange: function(/*widgetModel, propertyChanged, propertyValue*/) {

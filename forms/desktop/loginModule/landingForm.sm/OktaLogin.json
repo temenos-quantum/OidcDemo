@@ -1,14 +1,13 @@
 {
-    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "@class": "com.kony.gen.viz.model.component.KVizCustom",
     "DNDConfig": null,
-    "_children_": [],
     "_height_": {
         "type": "string",
-        "value": "100%"
+        "value": "300dp"
     },
     "_left_": {
         "type": "string",
-        "value": "0dp"
+        "value": "144dp"
     },
     "_margin_": [
         0,
@@ -16,22 +15,25 @@
         0,
         0
     ],
-    "_orientation_": 1,
     "_padding_": [
         0,
         0,
         0,
         0
     ],
-    "_percent_": true,
-    "_skin_": "sbdb5c769bae4812af3d8b235552c2fd",
     "_top_": {
         "type": "string",
-        "value": "0dp"
+        "value": "352dp"
     },
     "_width_": {
         "type": "string",
-        "value": "100%"
+        "value": "300dp"
+    },
+    "android": {
+        "render": false
+    },
+    "androidwearos": {
+        "render": false
     },
     "canUpdateUI": true,
     "centerx": {
@@ -42,20 +44,33 @@
         "type": "number",
         "value": ""
     },
-    "clipbounds": true,
     "containerweight": 0,
-    "data": {},
-    "enablescrolling": true,
+    "customProperties": {
+        "clientId": "0oaugi3",
+        "oktaDomain": "dev-359971.oktapreview.com/",
+        "redirectUri": "https://100032668.auth.konycloud.com/oauth2/callback"
+    },
+    "cwEvents": [],
+    "cwid": "cwba7a795bec1f4badbbf7f7ffa9257bc9",
     "id": "oktaLogin",
     "info": null,
+    "ipad": {
+        "render": false
+    },
+    "iphone": {
+        "render": false
+    },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "b8cf38b1e4a2409cb061de33a9d4dba3",
-    "layouttype": 2,
-    "masterType": 1,
-    "name": "kony.ui.UserWidgetInstance",
+    "kiosk": {
+        "render": false
+    },
+    "kuid": "ac771d6b159e4d0ba917da27b12d918e",
+    "name": "OktaLogin-kony.ui",
+    "nameSpaceIndex": 0,
     "parent": "mainFlex",
     "pf": "landingForm",
+    "platformKey": "spa",
     "responsiveData": {
         "b1": {
             "centerX": {
@@ -70,6 +85,14 @@
                 "type": "string",
                 "value": "400dp"
             },
+            "left": {
+                "type": "string",
+                "value": ""
+            },
+            "top": {
+                "type": "string",
+                "value": ""
+            },
             "width": {
                 "type": "string",
                 "value": "400dp"
@@ -78,9 +101,25 @@
     },
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
-    "retainflowhorizontalalignment": false,
-    "snapgridsize": 10,
-    "snaptogrid": true,
-    "sourceUserWidget": "j1347bdf7ebe47dab1e683c220423336",
-    "wType": "UserWidgetInstance"
+    "tabrcandroid": {
+        "render": false
+    },
+    "wType": "TPW",
+    "watchos": {
+        "render": false
+    },
+    "widgetIndex": 0,
+    "windows10": {
+        "render": false
+    },
+    "windows8": {
+        "render": false
+    },
+    "winphone10": {
+        "render": false
+    },
+    "winphone8": {
+        "render": false
+    },
+    "zindex": 1
 }
