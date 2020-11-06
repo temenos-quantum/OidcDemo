@@ -1,4 +1,5 @@
-define(["main"], function(main){
+define(["main", "loginModule/login_okta"], function(main, login){
+
 
 	return{
 
@@ -10,9 +11,7 @@ define(["main"], function(main){
 		},
 
 		postShow: function(){
-			this.view.loginButton.onClick = () => {
-				(new kony.mvc.Navigation("login")).navigate()
-			}
+			login('#okta_login')
 		},
 
 		onNavigate: function(){

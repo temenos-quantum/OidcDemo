@@ -1,16 +1,8 @@
 {
     "HEAD": "w72cd716ec384a6e9ea7427a82ab413e",
-    "w611272c5a9043d4a9f36205bc9a6694": {
-        "extension": "html",
-        "kuid": "w611272c5a9043d4a9f36205bc9a6694",
-        "name": "okta_login.html",
-        "parent": "w72cd716ec384a6e9ea7427a82ab413e",
-        "type": "F"
-    },
     "w72cd716ec384a6e9ea7427a82ab413e": {
         "children": [
-            "wdd4b1a484eb4423a14da68831060b53",
-            "w611272c5a9043d4a9f36205bc9a6694"
+            "wdd4b1a484eb4423a14da68831060b53"
         ],
         "kuid": "w72cd716ec384a6e9ea7427a82ab413e",
         "name": "localfiles",
