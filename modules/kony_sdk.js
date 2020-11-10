@@ -1,5 +1,5 @@
  /*
-  * kony-sdk-ide Version 9.1.5
+  * kony-sdk-ide Version 9.1.11
   */
         
 //#ifdef iphone
@@ -527,7 +527,7 @@ kony.sdk.currentInstance = null;
 kony.sdk.isLicenseUrlAvailable = true;
 kony.sdk.isOAuthLogoutInProgress = false;
 kony.sdk.constants = kony.sdk.constants || {};
-kony.sdk.version = "9.1.5";
+kony.sdk.version = "9.1.11";
 kony.sdk.logsdk = new konySdkLogger();
 kony.sdk.syncService = null;
 kony.sdk.dataStore = kony.sdk.dataStore || new konyDataStore();
@@ -1706,6 +1706,9 @@ kony.sdk.constants =
         /**Persist login constants**/
         PERSISTED_AUTH_RESPONSE : "persistedAuthResponse",
         PERSIST_LOGIN_RESPONSE_FLAG : "persistLoginResponseFlag",
+
+        /**Offline login constants**/
+        OFFLINE_LOGIN_AUTH_RESPONSE: "authResponse",
 
         /** Passthrough constant **/
         PASSTHROUGH_RESPONSE_HEADER : "X-Kony-Passthrough",
@@ -3009,6 +3012,9 @@ function IdentityService(konyRef, rec) {
 					+ '/' + kony.sdk.constants.INTEGRATION_INTERNAL_CLEAR_SESSION_ENDPOINT;
 				var headers = {};
 				headers[kony.sdk.constants.KONY_AUTHORIZATION_HEADER] = pastClaimsToken;
+				
+				var options = {};
+				options[kony.sdk.constants.IGNORE_MESSAGE_INTEGRITY] = true;
 
 				networkProvider.post(middlewareSessionInvalidationURL,
 									 null,
@@ -3029,7 +3035,7 @@ function IdentityService(konyRef, rec) {
 										 errObject[kony.sdk.constants.KEY_MESSAGE] = 'Failed to invalidate session with middleware,' +
 											 ' It\'s good idea to close all browser windows.';
 										 kony.sdk.verifyAndCallClosure(failureCallback, errObject);
-									 });
+									 },null,options);
 			} else {
 				kony.sdk.isOAuthLogoutInProgress = false;
 				kony.sdk.verifyAndCallClosure(successCallback, {});
@@ -15635,6 +15641,11 @@ function OAuthHandler(serviceUrl, providerName, appkey, callback, type, options,
             kony.timer.schedule("SPALogout", handleLogoutInSPA, 3, false);
         }else{
             requestUrl = serviceUrl + urlType + "login?provider=" + providerName + "&appkey=" + appkey;
+            var appVersion = kony.sdk.getFabricAppVersion();
+            if (!kony.sdk.isNullOrUndefined(appVersion)){ 
+                requestUrl += "&app_version=" + appVersion;
+            }
+
             requestUrl = appendCustomOAuthParamsToURL(requestUrl);
 
             //Checking whether server is compatable to redirect to user defined callback url
@@ -15655,6 +15666,7 @@ function OAuthHandler(serviceUrl, providerName, appkey, callback, type, options,
 	else {
 		var browserSF = null;
 		var userDefined = false;
+        var userDefinedBrowserEvent = null;
         if(kony.sdk.util.hasBrowserWidget(options)){
             browserSF = options[kony.sdk.constants.BROWSER_WIDGET];
 			userDefined = true;
@@ -15741,11 +15753,10 @@ function OAuthHandler(serviceUrl, providerName, appkey, callback, type, options,
 				return;
             } else {
                 isLoginCallbackInvoked = false;
-                //#ifdef PLATFORM_NATIVE_ANDROID
-                browserSF.onPageStarted = handleRequestCallback;
-                //#else
+
+                verifyAndStoreDefinedBrowserEvent(browserSF.handleRequest);
                 browserSF.handleRequest = handleRequestCallback;
-                //#endif
+                
                 requestUrl = appendCustomOAuthParamsToURL(requestUrl);
 			}
 		}
@@ -15795,6 +15806,18 @@ function OAuthHandler(serviceUrl, providerName, appkey, callback, type, options,
 			prevForm.show();
 		}
 
+        function verifyAndStoreDefinedBrowserEvent(browserEvent) {
+            if(browserEvent !== null) {
+                userDefinedBrowserEvent = browserEvent;
+            }
+        }
+
+        function verifyAndCallUserDefinedBrowserEvent(browserWidget, params) {
+            if(userDefinedBrowserEvent !== null) {
+                userDefinedBrowserEvent(browserWidget, params);
+            }
+        }
+
 		function handleRequestCallback(browserWidget, params) {
 
 			var originalUrl = params["originalURL"];
@@ -15825,6 +15848,7 @@ function OAuthHandler(serviceUrl, providerName, appkey, callback, type, options,
                     callback(urlType, {error: decodeURIComponent(params.queryParams.error)}, headers, true);
                 }
             }
+            verifyAndCallUserDefinedBrowserEvent(browserWidget, params);
 			return false;
 		}
 	}
@@ -17655,10 +17679,17 @@ kony.sdk.util.saveMetadatainDs = function (appKey, appSecret, servConfig) {
 kony.sdk.util.deleteMetadatafromDs = function () {
 
     kony.sdk.dataStore.removeItem(appConfig.appId);
-    kony.sdk.dataStore.removeItem(kony.sdk.util.prefixAppid(kony.sdk.constants.MOBILE_FABRIC_SERVICE_DOC));
 
+    kony.sdk.dataStore.removeItem(kony.sdk.util.prefixAppid(kony.sdk.constants.MOBILE_FABRIC_SERVICE_DOC));
     kony.sdk.dataStore.removeItem(kony.sdk.util.prefixAppid(kony.sdk.constants.ENCRYPTION_APPCONFIG_FLAG));
-    kony.sdk.dataStore.removeItem(kony.sdk.util.prefixAppid(kony.sdk.constants.SHARED_CLIENT_IDENTIFIER));
+
+    // Checking for Persisted/Offline login response present in DS
+    if (kony.sdk.util.isNullOrUndefinedOrEmptyObject(kony.sdk.dataStore.getItem(kony.sdk.constants.PERSISTED_AUTH_RESPONSE))
+        && kony.sdk.util.isNullOrUndefinedOrEmptyObject(kony.sdk.dataStore.getItem(kony.sdk.constants.OFFLINE_LOGIN_AUTH_RESPONSE))) {
+
+        kony.sdk.logsdk.debug("### deleteMetadatafromDs:: Login meta not available, deleting identifier.");
+        kony.sdk.dataStore.removeItem(kony.sdk.util.prefixAppid(kony.sdk.constants.SHARED_CLIENT_IDENTIFIER));
+    }
     kony.sdk.logsdk.info("### deleteMetadatafromDs:: metadata deleted successfuly from dataStore");
 };
 
@@ -17698,6 +17729,9 @@ kony.sdk.getFabricAppVersion = function(){
         return MFAppVersion;
     }
     else if (!kony.sdk.isNullOrUndefined(appConfig) && !kony.sdk.isNullOrUndefined(appConfig.runtimeAppVersion)){
+        if(appConfig.runtimeAppVersion == "Default"  && !kony.sdk.isNullOrUndefined(appConfig.svcDoc)){
+            return appConfig.svcDoc.app_default_version;
+        }
         return appConfig.runtimeAppVersion;
     }
 };
