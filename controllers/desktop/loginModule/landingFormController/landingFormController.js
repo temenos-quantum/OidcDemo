@@ -12,6 +12,12 @@ define(["main", "loginModule/login_okta"], function(main, login){
 
 		postShow: function(){
 			login('#okta_login')
+			.then((profile) => {
+				alert("TODO: Navigate to home screen.")
+			})
+			.catch(error => {
+				alert("TODO: Navigate to error screen.")
+			})
 		},
 
 		onNavigate: function(){

@@ -1,37 +1,35 @@
 define(["main", "./options"], function(main, options){
 
-	const oktaDomain = "dev-359971.oktapreview.com/"
+	/*global window, OktaSignIn*/
+	const oktaDomain = "dev-359971.oktapreview.com"
 	const clientId = "0oauvn4cr8D84VcO50h7"
-	const redirectUri = "https://100032668.auth.konycloud.com/oauth2/callback"
-	const issuer = `https://${oktaDomain}/oauth2/default`
-	const baseUrl = `https://${oktaDomain}`
+	const baseUrl = "https://" + oktaDomain
 
-	function createSignInWidget(divId){
+	//Okta won't allow the redirectUri to have the trailing #_[form name] fragment, so we take that off.
+	const redirectUri = window.location.href.split("#")[0]
 
-		/*global OktaSignIn*/
+	//const isSecure = selfUri.split('/')[0] === "https"*/
+
+	function loginWithOktaWidget(divId){
+
 		var widget = new OktaSignIn({
-			baseUrl,
-			el: divId,
+			el: divId, //e.g. "#okta_login",
 			clientId,
-			//baseUrl: "https://techjutsu.okta.com",
-			redirectUri,
-			//authParams: {issuer}
+			baseUrl,
+			redirectUri
 		});
 
 		return widget.showSignInToGetTokens({
-			//getAccessToken: true, // Return an access token from the authorization server
-			// pkce: true,
-			//getIdToken: true, // Return an ID token from the authorization server
 			scopes: ["openid", "email", "profile"]
 		}).then(function(tokens) {
-			console.log('Tokens retrieved and logged to console.' + tokens)
+			kony.print("Okta sign-in widget tokens: " + JSON.stringify(tokens))
+			widget.hide();
 			return tokens
 		}).catch(function(error) {
-			console.log(error);
-			return error
+			kony.print("Okta sign-in widget error" + JSON.stringify(error));
 		})
 	}
-	
+
 	function login(divId){
 
 		if(typeof window === "undefined") throw new Error("This is not a web app")
@@ -41,15 +39,16 @@ define(["main", "./options"], function(main, options){
 				"https://developer.okta.com/code/javascript/okta_sign-in_widget"
 			)
 		}
-		
-		return createSignInWidget(divId)
+
+		return loginWithOktaWidget(divId)
 		.then(tokens => {
-			kony.print("TODO: Send access token to Fabric custom identity")
+			//TODO: Call Fabric custom identity to hit Okta's /introspect endpoint with access_token and get a Fabric session.
+			kony.print("TODO: Call Fabric custom identity to hit /introspect with access_token: " + tokens.accessToken.accessToken)
 		})
 		.catch(e => {
-			kony.print("TODO: Handle Fabric authentication error")
+			kony.print("TODO: Handle Fabric authentication error: " + JSON.stringify(e))
 		})
 	}
-   
+
     return login;
 });
